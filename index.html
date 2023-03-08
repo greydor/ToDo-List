@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/reset.css" />
+    <link rel="stylesheet" href="../src/styles.css" />
+    <script src="main.js" defer></script>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <header>
+      <div>Todo List</div>
+    </header>
+    <div class="projects">
+      <div class="projects-header">Projects</div>
+      <div class="projects-content">
+        <div class="projects-item">Default Project</div>
+      </div>
+    </div>
+    <div class="task-container">
+      <button class="btn-add-task" id="btn-add-task" type="button">+</button>
+      <ul class="task-list"></ul>
+    </div>
+    <div class="overlay">
+      <form action="/" class="form-add-task">
+        <div class="form-input-container">
+          <div class="form-heading">Add new task</div>
+          <label for="input-task-title">Title:</label>
+          <input
+            type="text"
+            id="input-task-title"
+            name="title"
+            class="form-title"
+          />
+          <label for="input-task-description">Description:</label>
+          <textarea
+            type="text"
+            id="input-task-description"
+            name="description"
+            class="form-description"
+          ></textarea>
+          <label for="input-due-date">Due Date:</label>
+          <input type="date" id="input-due-date" name="due-date" />
+          <label for="input-importance">Importance:</label>
+          <select name="importance" id="input-importance">
+            <option value="">--Please choose an option--</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="form-btn-container">
+          <button type="submit" id="btn-submit-form" class="btn-submit-form">
+            Add
+          </button>
+          <button type="button" id="btn-cancel-form">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
