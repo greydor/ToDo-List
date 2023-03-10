@@ -1,5 +1,5 @@
 import formHandler from "./formHandler";
-import { renderTaskList } from "./taskList";
+import { renderTaskList } from "./renderTask";
 
 renderTaskList();
 formHandler();

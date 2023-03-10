@@ -1,5 +1,6 @@
 import task from "./task";
-import taskList, { renderTaskList, hideTaskList } from "./taskList";
+import { renderTaskList, hideTaskList } from "./renderTask";
+import projectList from "./projectList"
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -22,11 +23,11 @@ function formHandler() {
     });
 
     formNewTask.addEventListener("submit", (event) => {
-        submitForm(event, taskList.indexToEdit);
+        submitForm(event, projectList.currentProjectIndex, projectList.taskEditIndex);
     });
 }
 
-function submitForm(event, index = false) {
+function submitForm(event, currentProjectIndex, taskEditIndex = false) {
     const newTask = task(
         inputTitle.value,
         inputDescription.value,
@@ -34,16 +35,17 @@ function submitForm(event, index = false) {
         inputImportance.value
     );
 
-    if (index === false) {
-        taskList.add(newTask);
+    const taskListEdit = projectList[currentProjectIndex]
+    if (taskEditIndex === false) {
+        taskListEdit.add(newTask);
     } else {
-        taskList.replace(index, newTask);
+        taskListEdit.replace(taskEditIndex, newTask);
     }
     overlay.style.display = "none";
     formNewTask.reset();
     hideTaskList();
     renderTaskList();
-    taskList.indexToEdit = false;
+    projectList.indexToEdit = false;
     event.preventDefault();
 }
 
