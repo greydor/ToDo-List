@@ -23,11 +23,11 @@ function formHandler() {
     });
 
     formNewTask.addEventListener("submit", (event) => {
-        submitForm(event, projectList.currentProjectIndex, projectList.taskEditIndex);
+        submitForm(event, projectList.activeProjectIndex, projectList.taskEditIndex);
     });
 }
 
-function submitForm(event, currentProjectIndex, taskEditIndex = false) {
+function submitForm(event, projectIndex, taskIndex = false) {
     const newTask = task(
         inputTitle.value,
         inputDescription.value,
@@ -35,17 +35,17 @@ function submitForm(event, currentProjectIndex, taskEditIndex = false) {
         inputImportance.value
     );
 
-    const taskListEdit = projectList[currentProjectIndex]
-    if (taskEditIndex === false) {
+    const taskListEdit = projectList.active().tasks
+    if (taskIndex === false) {
         taskListEdit.add(newTask);
     } else {
-        taskListEdit.replace(taskEditIndex, newTask);
+        taskListEdit.replace(taskIndex, newTask);
     }
     overlay.style.display = "none";
     formNewTask.reset();
     hideTaskList();
     renderTaskList();
-    projectList.indexToEdit = false;
+    projectList.taskEditIndex = false;
     event.preventDefault();
 }
 

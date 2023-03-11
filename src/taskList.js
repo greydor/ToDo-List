@@ -13,9 +13,9 @@ const taskList = (() => {
         list.splice(index, 1);
     };
 
-    // taskEdit is the task object replacing the task in specified index
-    const replace = (index, taskEdit) => {
-        list[index] = taskEdit;
+    // updatedTask is the task object replacing the task in specified index
+    const replace = (index, updatedTask) => {
+        list[index] = updatedTask;
     };
 
 

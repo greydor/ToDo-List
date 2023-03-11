@@ -18,7 +18,7 @@ const projectList = (() => {
         { projectTitle: "Default Project - copy", tasks: exampleTasks2 },
     ];
 
-    const currentProjectIndex = 0
+    const activeProjectIndex = 0
 
     function add(projectTitle) {
         projects.push(projectTitle);
@@ -32,11 +32,15 @@ const projectList = (() => {
         return projects;
     }
 
+    function active() {
+        return projects[activeProjectIndex]
+    }
+
     // Variable temporarily set when editing task.
     // Changes task form submission.
     const taskEditIndex = false;
 
-    return { get, add, remove, currentProjectIndex, taskEditIndex };
+    return { get, add, remove, activeProjectIndex, taskEditIndex, active };
 })();
 
 export default projectList;

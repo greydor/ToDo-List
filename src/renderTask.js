@@ -1,7 +1,7 @@
-import taskList from "./taskList";
-import projectList from "./projectList";
+import projectList from "./projectList"
 
-const activeList = projectList.get()[projectList.currentProjectIndex].tasks;
+
+const activeList = projectList.get()[projectList.activeProjectIndex].tasks;
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
@@ -39,7 +39,7 @@ function render(currentTask, index) {
     btnEdit.textContent = "Edit";
     btnEdit.setAttribute("type", "button");
     btnEdit.addEventListener("click", () => {
-        taskList.indexToEdit = index;
+        projectList.taskEditIndex = index;
         overlay.style.display = "flex";
     });
 
