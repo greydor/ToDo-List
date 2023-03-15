@@ -1,6 +1,6 @@
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
-import projectList from "./projectList"
+import projectList from "./projectList";
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -23,7 +23,11 @@ function formHandler() {
     });
 
     formNewTask.addEventListener("submit", (event) => {
-        submitForm(event, projectList.activeProjectIndex, projectList.taskEditIndex);
+        submitForm(
+            event,
+            projectList.activeProjectIndex,
+            projectList.taskEditIndex
+        );
     });
 }
 
@@ -35,7 +39,7 @@ function submitForm(event, projectIndex, taskIndex = false) {
         inputImportance.value
     );
 
-    const taskListEdit = projectList.active().tasks
+    const taskListEdit = projectList.active().tasks;
     if (taskIndex === false) {
         taskListEdit.add(newTask);
     } else {

@@ -14,8 +14,8 @@ const projectList = (() => {
     exampleTasks.add(task2);
 
     const projects = [
-        { projectTitle: "Default Project", tasks: exampleTasks },
-        { projectTitle: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
     ];
 
     const activeProjectIndex = 0
