@@ -103,6 +103,10 @@ header {
     margin: 0 30px;
 }
 
+.btn-project-rename-accept {
+    display: none;
+}
+
 .task {
     display: flex;
     gap: 10px;
