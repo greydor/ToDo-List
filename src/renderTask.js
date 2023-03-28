@@ -1,7 +1,6 @@
-import projectList from "./projectList"
+import projectList, {activeProject} from "./projectList"
 
 
-const activeList = projectList.get()[projectList.activeProjectIndex].tasks;
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
@@ -55,7 +54,7 @@ function render(currentTask, index) {
 }
 
 function renderTaskList() {
-    activeList.get().forEach((task, index) => {
+    activeProject().tasks.get().forEach((task, index) => {
         render(task, index);
     });
 }
@@ -67,7 +66,7 @@ function hideTaskList() {
 }
 
 function deleteTask(index) {
-    activeList.remove(index);
+    activeProject().tasks.remove(index);
     hideTaskList();
     renderTaskList();
 }

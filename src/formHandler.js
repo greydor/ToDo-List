@@ -23,11 +23,7 @@ function formHandler() {
     });
 
     formNewTask.addEventListener("submit", (event) => {
-        submitForm(
-            event,
-            projectList.activeProjectIndex,
-            projectList.taskEditIndex
-        );
+        submitForm(event, projectList.activeIndex, projectList.taskEditIndex);
     });
 }
 
