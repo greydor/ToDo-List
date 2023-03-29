@@ -16,12 +16,16 @@
     <div class="projects">
       <div class="projects-header">
         <div>Projects</div>
-        <button type="button">+</button>
-
+        <button type="button" class="btn-add-project">+</button>
       </div>
       <ul class="projects-content">
         <li class="projects-item" data-index="0">
-          <input type="text" placeholder="Default Project" readonly></input>
+          <input
+            class="projects-item-name"
+            type="text"
+            placeholder="Default Project"
+            readonly
+          />
           <button class="btn-project-rename" type="button">...</button>
           <button class="btn-project-rename-accept" type="button">✓</button>
           <button class="btn-project-delete" type="button">X</button>
@@ -54,7 +58,6 @@
           <input type="date" id="input-due-date" name="due-date" />
           <label for="input-importance">Importance:</label>
           <select name="importance" id="input-importance">
-            <option value="">--Please choose an option--</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
