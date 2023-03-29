@@ -1,6 +1,7 @@
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
-import projectList from "./projectList";
+import projectList, {activeProject} from "./projectList"
+import {resetProjectButtons} from "./renderProjects";
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -14,6 +15,7 @@ const inputImportance = document.querySelector("#input-importance");
 
 function formHandler() {
     btnAddTask.addEventListener("click", () => {
+        resetProjectButtons()
         overlay.style.display = "flex";
     });
 
@@ -27,7 +29,7 @@ function formHandler() {
     });
 }
 
-function submitForm(event, projectIndex, taskIndex = false) {
+function submitForm(event, taskIndex = false) {
     const newTask = task(
         inputTitle.value,
         inputDescription.value,
@@ -35,7 +37,7 @@ function submitForm(event, projectIndex, taskIndex = false) {
         inputImportance.value
     );
 
-    const taskListEdit = projectList.active().tasks;
+    const taskListEdit = activeProject().tasks;
     if (taskIndex === false) {
         taskListEdit.add(newTask);
     } else {

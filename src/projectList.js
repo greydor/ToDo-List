@@ -22,7 +22,8 @@ const projectList = (() => {
     const activeIndex = 0;
 
     function add(projectTitle) {
-        projects.push(projectTitle);
+        const newProject = {title: projectTitle, tasks: taskList() }
+        projects.unshift(newProject);
     }
 
     function remove(index) {

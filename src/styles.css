@@ -33,6 +33,10 @@ header {
     display: flex;
 }
 
+.projects-item-name:hover {
+    cursor: pointer;
+}
+
 .task-container {
     grid-column: 2 / 3;
     grid-row: 2 / 3;

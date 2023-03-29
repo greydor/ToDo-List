@@ -20,7 +20,9 @@ function renderProjects() {
         );
         const btnRename = projectEl.querySelector(".btn-project-rename");
         btnRename.addEventListener("click", () => {
+
             projectNameEl.classList.add("edit-project-name");
+            projectNameEl.classList.remove("projects-item-name")
             projectNameEl.removeAttribute("readonly");
             btnRename.style.display = "none";
             btnRenameAccept.style.display = "inline";
@@ -34,6 +36,8 @@ function renderProjects() {
             btnRename.style.display = "inline";
             btnRenameAccept.style.display = "none";
             projectNameEl.setAttribute("readonly", "");
+            projectNameEl.classList.remove("edit-project-name");
+            projectNameEl.classList.add("projects-item-name")
         });
 
         const btnDelete = projectEl.querySelector(".btn-project-delete");
@@ -48,8 +52,12 @@ function renderProjects() {
             hideTaskList();
             renderTaskList();
         });
+
+                
     });
 }
+
+
 
 function hideProjects() {
     while (projectsListEl.firstChild) {
@@ -57,4 +65,24 @@ function hideProjects() {
     }
 }
 
-export { hideProjects, renderProjects };
+function resetProjectButtons() {
+    const btnRenameList = document.querySelectorAll(".btn-project-rename")
+    btnRenameList.forEach((btn) => {
+        btn.style.display = "inline"
+    })
+
+    const btnRenameAcceptList = document.querySelectorAll(".btn-project-rename-accept")
+    btnRenameAcceptList.forEach((btn) => {
+        btn.style.display = "none"
+    })
+
+    const projectsToReset = document.querySelectorAll(".edit-project-name")
+    projectsToReset.forEach((project) => {
+        project.classList.remove("edit-project-name")
+        project.classList.add("btn-project-rename")
+        const index = project.parentNode.getAttribute("data-index")
+        project.value = projectList.get()[index].title
+    })
+}
+
+export { hideProjects, renderProjects, resetProjectButtons };
