@@ -1,5 +1,6 @@
 import projectList from "./projectList";
 import { renderTaskList, hideTaskList } from "./renderTask";
+import resetProjectRender from "./resetProjectRender";
 
 const projectsListEl = document.querySelector(".projects-content");
 const defaultProjectEl = document.querySelector(".projects-item");
@@ -20,9 +21,9 @@ function renderProjects() {
         );
         const btnRename = projectEl.querySelector(".btn-project-rename");
         btnRename.addEventListener("click", () => {
-
+            resetProjectRender();
             projectNameEl.classList.add("edit-project-name");
-            projectNameEl.classList.remove("projects-item-name")
+            projectNameEl.classList.remove("projects-item-name");
             projectNameEl.removeAttribute("readonly");
             btnRename.style.display = "none";
             btnRenameAccept.style.display = "inline";
@@ -37,7 +38,9 @@ function renderProjects() {
             btnRenameAccept.style.display = "none";
             projectNameEl.setAttribute("readonly", "");
             projectNameEl.classList.remove("edit-project-name");
-            projectNameEl.classList.add("projects-item-name")
+            projectNameEl.classList.add("projects-item-name");
+            projectList.activeIndex = 0
+
         });
 
         const btnDelete = projectEl.querySelector(".btn-project-delete");
@@ -52,12 +55,8 @@ function renderProjects() {
             hideTaskList();
             renderTaskList();
         });
-
-                
     });
 }
-
-
 
 function hideProjects() {
     while (projectsListEl.firstChild) {
@@ -65,24 +64,4 @@ function hideProjects() {
     }
 }
 
-function resetProjectButtons() {
-    const btnRenameList = document.querySelectorAll(".btn-project-rename")
-    btnRenameList.forEach((btn) => {
-        btn.style.display = "inline"
-    })
-
-    const btnRenameAcceptList = document.querySelectorAll(".btn-project-rename-accept")
-    btnRenameAcceptList.forEach((btn) => {
-        btn.style.display = "none"
-    })
-
-    const projectsToReset = document.querySelectorAll(".edit-project-name")
-    projectsToReset.forEach((project) => {
-        project.classList.remove("edit-project-name")
-        project.classList.add("btn-project-rename")
-        const index = project.parentNode.getAttribute("data-index")
-        project.value = projectList.get()[index].title
-    })
-}
-
-export { hideProjects, renderProjects, resetProjectButtons };
+export { hideProjects, renderProjects };

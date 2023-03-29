@@ -9,6 +9,22 @@ const projectList = (() => {
     const exampleTasks = taskList();
     exampleTasks.add(task1);
     exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
+    exampleTasks.add(task1);
+    exampleTasks.add(task2);
 
     const exampleTasks2 = taskList();
     exampleTasks2.add(task3);
@@ -17,12 +33,30 @@ const projectList = (() => {
     const projects = [
         { title: "Default Project", tasks: exampleTasks },
         { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Default Project", tasks: exampleTasks },
+        { title: "Default Project - copy", tasks: exampleTasks2 },
     ];
 
     const activeIndex = 0;
 
     function add(projectTitle) {
-        const newProject = {title: projectTitle, tasks: taskList() }
+        const newProject = { title: projectTitle, tasks: taskList() };
         projects.unshift(newProject);
     }
 
@@ -42,8 +76,8 @@ const projectList = (() => {
 })();
 
 function activeProject() {
-    return projectList.get()[projectList.activeIndex]
+    return projectList.get()[projectList.activeIndex];
 }
 
 export default projectList;
-export {activeProject};
+export { activeProject };

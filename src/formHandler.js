@@ -1,7 +1,7 @@
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
-import projectList, {activeProject} from "./projectList"
-import {resetProjectButtons} from "./renderProjects";
+import projectList, { activeProject } from "./projectList";
+import resetProjectRender from "./resetProjectRender";
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -15,7 +15,7 @@ const inputImportance = document.querySelector("#input-importance");
 
 function formHandler() {
     btnAddTask.addEventListener("click", () => {
-        resetProjectButtons()
+        resetProjectRender();
         overlay.style.display = "flex";
     });
 

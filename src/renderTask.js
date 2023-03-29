@@ -1,4 +1,5 @@
 import projectList, {activeProject} from "./projectList"
+import resetProjectRender from "./resetProjectRender";
 
 
 
@@ -31,6 +32,7 @@ function render(currentTask, index) {
     btnDelete.setAttribute("type", "button");
     btnDelete.addEventListener("click", () => {
         deleteTask(index);
+        resetProjectRender()
     });
 
     const btnEdit = document.createElement("btn");
@@ -40,6 +42,7 @@ function render(currentTask, index) {
     btnEdit.addEventListener("click", () => {
         projectList.taskEditIndex = index;
         overlay.style.display = "flex";
+        resetProjectRender()
     });
 
     taskEl.appendChild(taskContainerLeft);

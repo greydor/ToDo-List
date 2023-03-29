@@ -1,6 +1,4 @@
-
-
-const taskList = (() => {
+const taskList = () => {
     const list = [];
 
     const get = () => list;
@@ -18,13 +16,7 @@ const taskList = (() => {
         list[index] = updatedTask;
     };
 
-
-
     return { get, add, remove, replace };
-});
-
-
-
-
+};
 
 export default taskList;
