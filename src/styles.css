@@ -7,6 +7,11 @@ html {
     padding: 0;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -31,7 +36,7 @@ header {
 
 .projects-content {
     list-style: none;
-    padding: 0;
+    padding: 0 5px;
 }
 
 .projects-header {
@@ -40,11 +45,15 @@ header {
 
 .projects-item {
     display: flex;
+    margin: 5px 0;
+    gap: 2px;
 }
 
 .projects-item-name,
 .edit-project-name {
     flex: 1;
+    background-color: rgb(252, 242, 230);
+    border: none;
 }
 
 .projects-item-name:hover {
@@ -55,6 +64,8 @@ header {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
     overflow: scroll;
+    overflow-x: hidden;
+    background-color: rgb(106, 106, 106);
 }
 
 .overlay {
@@ -69,11 +80,10 @@ header {
     z-index: 2;
     justify-content: center;
     align-items: center;
-    background-color: rgba(128, 128, 128, 0.812);
+    background-color: rgba(174, 172, 172, 0.812);
 }
 
 .form-add-task {
-
     background-color: rgb(252, 242, 230);
     padding: 30px;
     border-radius: 10px;
@@ -83,7 +93,7 @@ header {
 
 .btn-add-task {
     border: black 3px solid;
-    background-color: rgb(252, 242, 230);
+    background-color: #5eaafb;
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -91,8 +101,8 @@ header {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 50px;
-    right: 50px;
+    bottom: 25px;
+    right: 25px;
     font-size: 3rem;
 }
 
@@ -108,7 +118,6 @@ header {
     font-weight: bold;
     font-size: 1.3rem;
     grid-column: 1 / -1;
-
 }
 
 .form-btn-container {
@@ -140,7 +149,52 @@ header {
     display: none;
 }
 
+.btn-project {
+    background-color: rgb(252, 242, 230);
+    border: none;
+}
+
+.task-list {
+    padding-bottom: 200px;
+}
+
 .task {
     display: flex;
     gap: 10px;
+    padding: 0px 20px;
+    border-bottom: solid 2px rgb(180, 180, 180);
+    background-color: rgb(252, 242, 230);
+}
+
+.btn-edit-container {
+    margin-left: auto;
+}
+
+.btn-edit {
+    border: solid 2px;
+    border-radius: .6rem;
+    padding: 1px 6px;
+    font-size: .8rem;
+}
+
+.btn-delete {
+    border: solid red 2px;
+    color: red;
+    border-radius: .6rem;
+    padding: 1px 6px;
+    font-size: .8rem;
+}
+
+.btn-delete:hover,
+.btn-edit:hover {
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.task:nth-child(even) {
+    background-color: white;
 }

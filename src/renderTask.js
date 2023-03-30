@@ -26,6 +26,25 @@ function render(currentTask, index) {
     const taskImportance = document.createElement("div");
     taskImportance.textContent = currentTask.importance;
 
+    const btnEditDiv = document.createElement("div")
+    btnEditDiv.classList.add("flex-container")
+    const btnDelDiv = btnEditDiv.cloneNode();
+    btnEditDiv.classList.add("btn-edit-container")
+    btnDelDiv.classList.add("btn-del-container")
+
+    const btnEdit = document.createElement("btn");
+    btnEdit.classList.add("btn-edit");
+    
+
+    btnEdit.textContent = "Edit";
+    btnEdit.setAttribute("type", "button");
+    btnEdit.addEventListener("click", () => {
+        projectList.taskEditIndex = index;
+        overlay.style.display = "flex";
+        resetProjectRender()
+    });
+    btnEditDiv.appendChild(btnEdit)
+
     const btnDelete = document.createElement("btn");
     btnDelete.classList.add("btn-delete");
     btnDelete.textContent = "Delete";
@@ -34,22 +53,14 @@ function render(currentTask, index) {
         deleteTask(index);
         resetProjectRender()
     });
+    btnDelDiv.appendChild(btnDelete)
 
-    const btnEdit = document.createElement("btn");
-    btnEdit.classList.add("btn-edit");
-    btnEdit.textContent = "Edit";
-    btnEdit.setAttribute("type", "button");
-    btnEdit.addEventListener("click", () => {
-        projectList.taskEditIndex = index;
-        overlay.style.display = "flex";
-        resetProjectRender()
-    });
 
     taskEl.appendChild(taskContainerLeft);
     taskEl.appendChild(taskDate);
     taskEl.appendChild(taskImportance);
-    taskEl.appendChild(btnDelete);
-    taskEl.appendChild(btnEdit);
+    taskEl.appendChild(btnEditDiv);
+    taskEl.appendChild(btnDelDiv);
 
     taskEl.setAttribute("data-index", index);
 
