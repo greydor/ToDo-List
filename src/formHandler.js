@@ -1,7 +1,9 @@
+import { format } from 'date-fns'
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
 import projectList, { activeProject } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
+
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -30,10 +32,17 @@ function formHandler() {
 }
 
 function submitForm(event, taskIndex = false) {
+    let dueDate
+    try {
+    dueDate = format(new Date(inputDueDate.value), 'MM/dd/yyyy')        
+    } catch (rangeError) {
+    dueDate = "N/A"
+    }
+
     const newTask = task(
         inputTitle.value,
         inputDescription.value,
-        inputDueDate.value,
+        dueDate,
         inputImportance.value
     );
 

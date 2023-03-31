@@ -160,14 +160,29 @@ header {
 
 .task {
     display: flex;
+    align-items: center;
     gap: 10px;
     padding: 0px 20px;
     border-bottom: solid 2px rgb(180, 180, 180);
     background-color: rgb(252, 242, 230);
 }
 
-.btn-edit-container {
+.task-date {
     margin-left: auto;
+    font-size: .8rem;
+}
+
+.task-title {
+    font-weight: bold;
+}
+
+.task-desc {
+    font-size: .8rem;
+    color: grey
+}
+
+.btn-edit-container {
+    margin-left: 30px;
 }
 
 .btn-edit {
@@ -178,8 +193,8 @@ header {
 }
 
 .btn-delete {
-    border: solid red 2px;
-    color: red;
+    border: solid rgb(173, 0, 0) 2px;
+    color: rgb(173, 0, 0);
     border-radius: .6rem;
     padding: 1px 6px;
     font-size: .8rem;
