@@ -1,5 +1,5 @@
 import projectList from "./projectList";
-import { renderProjects, hideProjects } from "./renderProjects";
+import { renderProjects, hideProjects, highlightActiveProject } from "./renderProjects";
 import resetProjectRender from "./resetProjectRender";
 import { renderTaskList, hideTaskList } from "./renderTask";
 
@@ -16,6 +16,7 @@ const btnRename = newProjectEl.querySelector(".btn-project-rename");
 const btnRenameAccept = newProjectEl.querySelector(
     ".btn-project-rename-accept"
 );
+
 
 function newProjectHandler() {
     btnAddProject.addEventListener("click", () => {
@@ -47,10 +48,12 @@ function newProjectHandler() {
         projectNameEl.classList.add("projects-item-name");
         projectNameEl.classList.remove("new-project-temp");
 
+        projectList.activeIndex = 0
         hideProjects();
         renderProjects();
         hideTaskList()
         renderTaskList()
+        highlightActiveProject()
     });
 }
 

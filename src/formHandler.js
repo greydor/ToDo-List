@@ -19,6 +19,7 @@ function formHandler() {
     btnAddTask.addEventListener("click", () => {
         resetProjectRender();
         overlay.style.display = "flex";
+
     });
 
     btnCancel.addEventListener("click", () => {
@@ -27,7 +28,7 @@ function formHandler() {
     });
 
     formNewTask.addEventListener("submit", (event) => {
-        submitForm(event, projectList.activeIndex, projectList.taskEditIndex);
+        submitForm(event, projectList.taskEditIndex);
     });
 }
 

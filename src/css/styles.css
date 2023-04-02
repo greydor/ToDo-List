@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
 
+:root {
+    --light: rgb(202, 202, 202);
+}
+
 html {
     font-family: 'Roboto', sans-serif;
     height: 100%;
@@ -21,14 +25,16 @@ body {
 header {
     grid-row: 1 / 1;
     grid-column: 1 / 2;
-    background-color: rgb(104, 50, 50);
-    color: white;
+    background-color: rgb(49, 49, 49);
+    color: var(--light);
+    padding: 0 5px;
+    
 }
 
 .projects {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    background-color: rgb(104, 50, 50);
+    background-color: rgb(49, 49, 49);
     color: white;
     overflow: scroll;
     overflow-x: hidden;
@@ -46,18 +52,33 @@ header {
 .projects-item {
     display: flex;
     margin: 5px 0;
-    gap: 2px;
+    gap: 3px;
+}
+
+.active-project {
+    border: red solid;
 }
 
 .projects-item-name,
 .edit-project-name {
     flex: 1;
-    background-color: rgb(252, 242, 230);
+    background-color: var(--light);
     border: none;
+    border-radius: 4px;
+}
+
+.projects-item-name:focus,
+.edit-project-name:focus {
+    outline: none;
 }
 
 .projects-item-name:hover {
     cursor: pointer;
+}
+
+.btn-project-icon {
+    height: 20px;
+    width: auto;
 }
 
 .task-container {
@@ -65,7 +86,7 @@ header {
     grid-row: 1 / 3;
     overflow: scroll;
     overflow-x: hidden;
-    background-color: rgb(106, 106, 106);
+    background-color: var(--light);
 }
 
 .overlay {
@@ -80,7 +101,7 @@ header {
     z-index: 2;
     justify-content: center;
     align-items: center;
-    background-color: rgba(174, 172, 172, 0.812);
+    background-color: var(--light);
 }
 
 .form-add-task {
@@ -109,15 +130,13 @@ header {
 .form-input-container {
     display: grid;
     grid-template-columns: 100px 1fr 1fr;
-    grid-template-rows: 1fr 1fr 3fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 40px;
 }
 
-.form-heading {
+.form-input-container label {
     font-weight: bold;
-    font-size: 1.3rem;
-    grid-column: 1 / -1;
 }
 
 .form-btn-container {
@@ -149,9 +168,15 @@ header {
     display: none;
 }
 
+.btn-project-rename {
+    fill: rgb(29, 29, 170);
+}
+
 .btn-project {
-    background-color: rgb(252, 242, 230);
+    background-color:  var(--light);
     border: none;
+    padding: 0px;
+    border-radius: 4px;
 }
 
 .task-list {
@@ -162,7 +187,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0px 20px;
+    padding: 0px 20px 0 5px;
     border-bottom: solid 2px rgb(180, 180, 180);
     background-color: rgb(252, 242, 230);
 }
@@ -174,6 +199,25 @@ header {
 
 .task-title {
     font-weight: bold;
+}
+
+.task-priority {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex: none;
+}
+
+.priority-high {
+    background-color: red;
+}
+
+.priority-med {
+    background-color: yellow;
+}
+
+.priority-low {
+    background-color: green;
 }
 
 .task-desc {

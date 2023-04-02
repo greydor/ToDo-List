@@ -39,23 +39,46 @@ function renderProjects() {
             projectNameEl.setAttribute("readonly", "");
             projectNameEl.classList.remove("edit-project-name");
             projectNameEl.classList.add("projects-item-name");
-            projectList.activeIndex = 0
-
+            projectList.activeIndex = 0;
         });
 
         const btnDelete = projectEl.querySelector(".btn-project-delete");
         btnDelete.addEventListener("click", () => {
+            // Prevent deleting last project
+            if (!projectList.get()[1]) {
+                return;
+            }
             projectList.remove(dataIndex);
             hideProjects();
             renderProjects();
+            projectList.activeIndex = 0;
+            hideTaskList();
+            renderTaskList();
+            highlightActiveProject();
         });
 
         projectNameEl.addEventListener("click", () => {
             projectList.activeIndex = dataIndex;
             hideTaskList();
             renderTaskList();
+            highlightActiveProject();
         });
     });
+}
+
+function highlightActiveProject() {
+    try {
+        document
+            .querySelector(".active-project")
+            .classList.remove("active-project");
+    } catch (TypeError) {
+        // Pass
+    }
+
+    const active = document.querySelector(
+        `li[data-index="${projectList.activeIndex}"]`
+    );
+    active.classList.add("active-project");
 }
 
 function hideProjects() {
@@ -64,4 +87,4 @@ function hideProjects() {
     }
 }
 
-export { hideProjects, renderProjects };
+export { hideProjects, renderProjects, highlightActiveProject };

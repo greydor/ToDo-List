@@ -1,12 +1,29 @@
-import projectList, { activeProject } from "./projectList";
+import { format } from 'date-fns'
+import projectList, { activeProject, activeTask } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
+
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
 
+const inputDescription = document.querySelector("#input-task-description");
+const inputTitle = document.querySelector("#input-task-title");
+const inputDueDate = document.querySelector("#input-due-date");
+const inputImportance = document.querySelector("#input-importance");
+
 function render(currentTask, index) {
     const taskEl = document.createElement("li");
     taskEl.classList.add("task");
+
+    const taskPriority = document.createElement("div");
+    taskPriority.classList.add("task-priority");
+    if (currentTask.importance === "High") {
+        taskPriority.classList.add("priority-high")
+    } else if (currentTask.importance === "Medium") {
+        taskPriority.classList.add("priority-med")
+    } else {
+        taskPriority.classList.add("priority-low")
+    }
 
     const taskContainerLeft = document.createElement("div");
     taskContainerLeft.classList.add("task-container-left");
@@ -39,6 +56,10 @@ function render(currentTask, index) {
         projectList.taskEditIndex = index;
         overlay.style.display = "flex";
         resetProjectRender();
+        inputTitle.value = activeTask().title
+        inputDescription.value = activeTask().description
+        inputDueDate.value = format(new Date(activeTask().dueDate), "yyyy-MM-dd")
+        inputImportance.value = activeTask().importance
     });
     btnEditDiv.appendChild(btnEdit);
 
@@ -52,6 +73,7 @@ function render(currentTask, index) {
     });
     btnDelDiv.appendChild(btnDelete);
 
+    taskEl.appendChild(taskPriority)
     taskEl.appendChild(taskContainerLeft);
     taskEl.appendChild(taskDate);
     taskEl.appendChild(btnEditDiv);

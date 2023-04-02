@@ -79,5 +79,9 @@ function activeProject() {
     return projectList.get()[projectList.activeIndex];
 }
 
+function activeTask() {
+    return activeProject().tasks.get()[projectList.taskEditIndex]
+}
+
 export default projectList;
-export { activeProject };
+export { activeProject, activeTask };
