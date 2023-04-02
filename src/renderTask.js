@@ -1,7 +1,6 @@
-import { format } from 'date-fns'
+import { format } from "date-fns";
 import projectList, { activeProject, activeTask } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
-
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
@@ -15,21 +14,26 @@ function render(currentTask, index) {
     const taskEl = document.createElement("li");
     taskEl.classList.add("task");
 
+    const taskCheckbox = document.createElement("input");
+    taskCheckbox.setAttribute("type", "checkbox");
+    taskCheckbox.setAttribute("id", "task-checkbox");
+    taskCheckbox.setAttribute("aria-label", "mark task complete");
+
     const taskPriority = document.createElement("div");
     taskPriority.classList.add("task-priority");
     if (currentTask.importance === "High") {
-        taskPriority.classList.add("priority-high")
+        taskPriority.classList.add("priority-high");
     } else if (currentTask.importance === "Medium") {
-        taskPriority.classList.add("priority-med")
+        taskPriority.classList.add("priority-med");
     } else {
-        taskPriority.classList.add("priority-low")
+        taskPriority.classList.add("priority-low");
     }
 
     const taskContainerLeft = document.createElement("div");
     taskContainerLeft.classList.add("task-container-left");
 
     const taskTitle = document.createElement("div");
-    taskTitle.classList.add("task-title")
+    taskTitle.classList.add("task-title");
     taskTitle.textContent = currentTask.title;
     const taskDesc = document.createElement("div");
     taskDesc.classList.add("task-desc");
@@ -38,7 +42,7 @@ function render(currentTask, index) {
     taskContainerLeft.appendChild(taskDesc);
 
     const taskDate = document.createElement("div");
-    taskDate.classList.add("task-date")
+    taskDate.classList.add("task-date");
     taskDate.textContent = currentTask.dueDate;
 
     const btnEditDiv = document.createElement("div");
@@ -56,10 +60,13 @@ function render(currentTask, index) {
         projectList.taskEditIndex = index;
         overlay.style.display = "flex";
         resetProjectRender();
-        inputTitle.value = activeTask().title
-        inputDescription.value = activeTask().description
-        inputDueDate.value = format(new Date(activeTask().dueDate), "yyyy-MM-dd")
-        inputImportance.value = activeTask().importance
+        inputTitle.value = activeTask().title;
+        inputDescription.value = activeTask().description;
+        inputDueDate.value = format(
+            new Date(activeTask().dueDate),
+            "yyyy-MM-dd"
+        );
+        inputImportance.value = activeTask().importance;
     });
     btnEditDiv.appendChild(btnEdit);
 
@@ -73,7 +80,8 @@ function render(currentTask, index) {
     });
     btnDelDiv.appendChild(btnDelete);
 
-    taskEl.appendChild(taskPriority)
+    taskEl.appendChild(taskCheckbox);
+    // taskEl.appendChild(taskPriority)
     taskEl.appendChild(taskContainerLeft);
     taskEl.appendChild(taskDate);
     taskEl.appendChild(btnEditDiv);

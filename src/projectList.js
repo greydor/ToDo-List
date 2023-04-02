@@ -80,7 +80,7 @@ function activeProject() {
 }
 
 function activeTask() {
-    return activeProject().tasks.get()[projectList.taskEditIndex]
+    return activeProject().tasks.get()[projectList.taskEditIndex];
 }
 
 export default projectList;

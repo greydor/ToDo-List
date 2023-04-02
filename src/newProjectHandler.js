@@ -12,6 +12,7 @@ const projectNameEl = newProjectEl.querySelector("input");
 
 const projectsWindow = document.querySelector(".projects")
 
+const btnDelete = newProjectEl.querySelector(".btn-project-delete")
 const btnRename = newProjectEl.querySelector(".btn-project-rename");
 const btnRenameAccept = newProjectEl.querySelector(
     ".btn-project-rename-accept"
@@ -55,6 +56,14 @@ function newProjectHandler() {
         renderTaskList()
         highlightActiveProject()
     });
+
+    btnDelete.addEventListener("click", () => {
+        hideProjects();
+        renderProjects();
+        highlightActiveProject();
+    })
+
+    
 }
 
 export default newProjectHandler;

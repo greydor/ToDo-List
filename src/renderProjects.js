@@ -67,10 +67,11 @@ function renderProjects() {
 }
 
 function highlightActiveProject() {
+    const activeProjectELs = document.querySelectorAll(".active-project");
     try {
-        document
-            .querySelector(".active-project")
-            .classList.remove("active-project");
+        activeProjectELs.forEach((element) => {
+            element.classList.remove("active-project");
+        });
     } catch (TypeError) {
         // Pass
     }
@@ -78,7 +79,9 @@ function highlightActiveProject() {
     const active = document.querySelector(
         `li[data-index="${projectList.activeIndex}"]`
     );
-    active.classList.add("active-project");
+    for (const element of active.children) {
+        element.classList.add("active-project");
+    }
 }
 
 function hideProjects() {

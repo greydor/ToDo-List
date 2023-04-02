@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
 
 :root {
-    --light: rgb(202, 202, 202);
+    --dark: rgb(41, 37, 36);
+    --light: rgb(207, 219, 213);
 }
 
 html {
@@ -9,6 +10,11 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.projects-item-name:active,
+.edit-project-name:active {
+    outline: none;
 }
 
 ul {
@@ -25,17 +31,16 @@ body {
 header {
     grid-row: 1 / 1;
     grid-column: 1 / 2;
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(57, 62, 70);
     color: var(--light);
     padding: 0 5px;
-    
+
 }
 
 .projects {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    background-color: rgb(49, 49, 49);
-    color: white;
+    background-color: rgb(57, 62, 70);
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -43,6 +48,7 @@ header {
 .projects-content {
     list-style: none;
     padding: 0 5px;
+
 }
 
 .projects-header {
@@ -52,27 +58,28 @@ header {
 .projects-item {
     display: flex;
     margin: 5px 0;
-    gap: 3px;
+    gap: 5px;
+
 }
 
+
+
 .active-project {
-    border: red solid;
+    outline: 2px #ffd369 solid;
 }
+
 
 .projects-item-name,
 .edit-project-name {
+    color: var(--light);
     flex: 1;
-    background-color: var(--light);
+    background-color: var(--dark);
     border: none;
     border-radius: 4px;
 }
 
-.projects-item-name:focus,
-.edit-project-name:focus {
-    outline: none;
-}
-
-.projects-item-name:hover {
+.projects-item-name:hover,
+.btn-project-icon:hover {
     cursor: pointer;
 }
 
@@ -81,12 +88,16 @@ header {
     width: auto;
 }
 
+.btn-project-icon:hover {
+    fill: rgb(223, 47, 47);
+}
+
 .task-container {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
     overflow: scroll;
     overflow-x: hidden;
-    background-color: var(--light);
+    background-color: rgb(24, 24, 24);
 }
 
 .overlay {
@@ -101,7 +112,7 @@ header {
     z-index: 2;
     justify-content: center;
     align-items: center;
-    background-color: var(--light);
+    background-color: rgba(61, 61, 61, 0.733);
 }
 
 .form-add-task {
@@ -168,15 +179,13 @@ header {
     display: none;
 }
 
-.btn-project-rename {
-    fill: rgb(29, 29, 170);
-}
 
 .btn-project {
-    background-color:  var(--light);
+    background-color: var(--dark);
     border: none;
     padding: 0px;
     border-radius: 4px;
+    fill: var(--light);
 }
 
 .task-list {
@@ -189,12 +198,17 @@ header {
     gap: 10px;
     padding: 0px 20px 0 5px;
     border-bottom: solid 2px rgb(180, 180, 180);
-    background-color: rgb(252, 242, 230);
+    border-left: solid 2px rgb(180, 180, 180);
+    color: var(--light)
 }
 
 .task-date {
     margin-left: auto;
     font-size: .8rem;
+}
+
+.task-container-left {
+    min-width: 250px;
 }
 
 .task-title {
@@ -222,11 +236,11 @@ header {
 
 .task-desc {
     font-size: .8rem;
-    color: grey
+    color: rgb(153, 153, 153)
 }
 
 .btn-edit-container {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .btn-edit {
@@ -237,8 +251,8 @@ header {
 }
 
 .btn-delete {
-    border: solid rgb(173, 0, 0) 2px;
-    color: rgb(173, 0, 0);
+    border: solid rgb(221, 47, 47) 2px;
+    color: rgb(221, 47, 47);
     border-radius: .6rem;
     padding: 1px 6px;
     font-size: .8rem;
@@ -255,5 +269,10 @@ header {
 }
 
 .task:nth-child(even) {
-    background-color: white;
+    background-color: var(--dark);
+}
+
+.task:nth-child(odd) {
+    background-color: rgb(48, 47, 58);
+    ;
 }
