@@ -2,24 +2,29 @@ import projectList from "./projectList";
 import { renderTaskList, hideTaskList } from "./renderTask";
 import resetProjectRender from "./resetProjectRender";
 
+
 const projectsListEl = document.querySelector(".projects-content");
+// Initial project DOM element that serves as a template for new projects
 const defaultProjectEl = document.querySelector(".projects-item");
 
 function renderProjects() {
+    // Render interactive list of all projects
     projectList.get().forEach((project, index) => {
         const projectEl = defaultProjectEl.cloneNode(true);
         const projectNameEl = projectEl.querySelector("input");
 
+        // Render existing project name
         projectNameEl.value = project.title;
+        // data-index matches the project index in projectList
         projectEl.setAttribute("data-index", index);
         projectsListEl.appendChild(projectEl);
-
-        const dataIndex = projectEl.getAttribute("data-index");
 
         const btnRenameAccept = projectEl.querySelector(
             ".btn-project-rename-accept"
         );
         const btnRename = projectEl.querySelector(".btn-project-rename");
+
+        // Toggle ability to rename project
         btnRename.addEventListener("click", () => {
             resetProjectRender();
             projectNameEl.classList.add("edit-project-name");
@@ -29,10 +34,10 @@ function renderProjects() {
             btnRenameAccept.style.display = "inline";
         });
 
+        // Accept and update project name
         btnRenameAccept.addEventListener("click", () => {
-            // Update project name
             const newProjectName = projectNameEl.value;
-            projectList.get()[dataIndex].title = newProjectName;
+            projectList.get()[index].title = newProjectName;
 
             btnRename.style.display = "inline";
             btnRenameAccept.style.display = "none";
@@ -42,13 +47,14 @@ function renderProjects() {
             projectList.activeIndex = 0;
         });
 
+        // Delete project
         const btnDelete = projectEl.querySelector(".btn-project-delete");
         btnDelete.addEventListener("click", () => {
             // Prevent deleting last project
             if (!projectList.get()[1]) {
                 return;
             }
-            projectList.remove(dataIndex);
+            projectList.remove(index);
             hideProjects();
             renderProjects();
             projectList.activeIndex = 0;
@@ -57,8 +63,9 @@ function renderProjects() {
             highlightActiveProject();
         });
 
+        // Show project tasks when a project is selected
         projectNameEl.addEventListener("click", () => {
-            projectList.activeIndex = dataIndex;
+            projectList.activeIndex = index;
             hideTaskList();
             renderTaskList();
             highlightActiveProject();
@@ -66,6 +73,7 @@ function renderProjects() {
     });
 }
 
+// Add class to highlight currently selected project
 function highlightActiveProject() {
     const activeProjectELs = document.querySelectorAll(".active-project");
     try {

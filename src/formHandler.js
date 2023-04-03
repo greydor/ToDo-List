@@ -1,3 +1,5 @@
+// Add functionality to form for creating and editing tasks
+
 import { format } from "date-fns";
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
@@ -15,6 +17,7 @@ const inputDueDate = document.querySelector("#input-due-date");
 const inputPriority = document.querySelector("#input-priority");
 
 function formHandler() {
+    // Show form
     btnAddTask.addEventListener("click", () => {
         resetProjectRender();
         overlay.style.display = "flex";
@@ -32,12 +35,14 @@ function formHandler() {
 
 function submitForm(event, taskIndex = false) {
     let dueDate;
+    // Store selected date in a Date object, except if no date is selected
     try {
         dueDate = format(new Date(inputDueDate.value), "MM/dd/yyyy");
     } catch (rangeError) {
         dueDate = "N/A";
     }
 
+    // Add new task to project
     const newTask = task(
         inputTitle.value,
         inputDescription.value,
@@ -46,12 +51,17 @@ function submitForm(event, taskIndex = false) {
         false
     );
 
+    // Tasklist for active project
     const taskListEdit = activeProject().tasks;
+
+    // If no project is selected for editing, add new task
+    // Otherwise, replace existing task being edited with the updated data
     if (taskIndex === false) {
         taskListEdit.add(newTask);
     } else {
         taskListEdit.replace(taskIndex, newTask);
     }
+    
     overlay.style.display = "none";
     formNewTask.reset();
     hideTaskList();

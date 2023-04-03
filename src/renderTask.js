@@ -1,10 +1,12 @@
+// Renmder all tasks from currently selected project
+// Define event listeners for task elements
+
 import { format } from "date-fns";
 import projectList, { activeProject, activeTask } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
-
 const inputDescription = document.querySelector("#input-task-description");
 const inputTitle = document.querySelector("#input-task-title");
 const inputDueDate = document.querySelector("#input-due-date");
@@ -25,6 +27,7 @@ function render(task, index) {
         taskEl.classList.add("complete");
     }
 
+    // Toggle task completion status
     taskCheckbox.addEventListener("click", () => {
         if (currentTask.complete === true) {
             taskEl.classList.remove("complete");
@@ -34,20 +37,24 @@ function render(task, index) {
         currentTask.complete = !currentTask.complete;
     });
 
+    // Flag project if priority is set to high
     const taskPriority = document.createElement("div");
     taskPriority.classList.add("task-priority");
     if (currentTask.priority === "High") {
         taskPriority.classList.add("priority-high");
     }
-    const taskContainerLeft = document.createElement("div");
-    taskContainerLeft.classList.add("task-container-left");
 
     const taskTitle = document.createElement("div");
     taskTitle.classList.add("task-title");
     taskTitle.textContent = currentTask.title;
+
     const taskDesc = document.createElement("div");
     taskDesc.classList.add("task-desc");
     taskDesc.textContent = currentTask.description;
+
+    // Create container with task title and description 
+    const taskContainerLeft = document.createElement("div");
+    taskContainerLeft.classList.add("task-container-left");    
     taskContainerLeft.appendChild(taskTitle);
     taskContainerLeft.appendChild(taskDesc);
 
@@ -63,27 +70,33 @@ function render(task, index) {
 
     const btnEdit = document.createElement("btn");
     btnEdit.classList.add("btn-edit");
-
     btnEdit.textContent = "Edit";
     btnEdit.setAttribute("type", "button");
+
+    // Display task edit form
     btnEdit.addEventListener("click", () => {
+        // Record the index of task being edited
         projectList.taskEditIndex = index;
+        // Change display from none to flex
         overlay.style.display = "flex";
         resetProjectRender();
+
+        // Populate form based on existing task data
         inputTitle.value = activeTask().title;
         inputDescription.value = activeTask().description;
-
         try {
             inputDueDate.value = format(
                 new Date(activeTask().dueDate),
                 "yyyy-MM-dd"
             );
+        // Due date is optional, skip if date is not set
         } catch (RangeError) {
             // Pass
         }
-
         inputPriority.value = activeTask().priority;
+
     });
+
     btnEditDiv.appendChild(btnEdit);
 
     const btnDelete = document.createElement("btn");
@@ -123,6 +136,7 @@ function hideTaskList() {
 }
 
 function deleteTask(index) {
+    // Delete task and re-render list
     activeProject().tasks.remove(index);
     hideTaskList();
     renderTaskList();
