@@ -1,9 +1,8 @@
-import { format } from 'date-fns'
+import { format } from "date-fns";
 import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
 import projectList, { activeProject } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
-
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -19,7 +18,6 @@ function formHandler() {
     btnAddTask.addEventListener("click", () => {
         resetProjectRender();
         overlay.style.display = "flex";
-
     });
 
     btnCancel.addEventListener("click", () => {
@@ -33,11 +31,11 @@ function formHandler() {
 }
 
 function submitForm(event, taskIndex = false) {
-    let dueDate
+    let dueDate;
     try {
-    dueDate = format(new Date(inputDueDate.value), 'MM/dd/yyyy')        
+        dueDate = format(new Date(inputDueDate.value), "MM/dd/yyyy");
     } catch (rangeError) {
-    dueDate = "N/A"
+        dueDate = "N/A";
     }
 
     const newTask = task(
@@ -45,7 +43,7 @@ function submitForm(event, taskIndex = false) {
         inputDescription.value,
         dueDate,
         inputPriority.value,
-        false,
+        false
     );
 
     const taskListEdit = activeProject().tasks;

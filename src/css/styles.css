@@ -25,7 +25,8 @@ ul {
 body {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: 100px 1fr;
+    background-color: rgb(57, 62, 70);
 }
 
 header {
@@ -34,7 +35,14 @@ header {
     background-color: rgb(57, 62, 70);
     color: var(--light);
     padding: 0 5px;
+}
 
+h1 {
+    text-align: center;
+    border-bottom: solid 2px #3b6ca0;
+    margin-bottom: 5px;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .projects {
@@ -43,6 +51,7 @@ header {
     background-color: rgb(57, 62, 70);
     /* overflow-y: scroll; */
     min-width: 350px;
+    padding: 5px 0;
 
 }
 
@@ -52,8 +61,32 @@ header {
 
 }
 
+.btn-add-project {
+    margin-left: 10px;
+    border-radius: 50%;
+    /* border: var(--light) 3px solid; */
+    color: var(--light);
+    background-color: var(--dark);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.btn-add-project:hover {
+    cursor: pointer;
+    color: rgb(223, 47, 47);
+}
+
 .projects-header {
     display: flex;
+    padding-bottom: 50px;
+    align-items: center;
+    padding: 5px;
+    font-size: 1.5rem;
 }
 
 .projects-item {
@@ -116,7 +149,7 @@ header {
     justify-content: center;
     align-items: center;
     background-color: rgba(61, 61, 61, 0.733);
-    
+
 }
 
 .form-add-task {
@@ -131,8 +164,9 @@ header {
 
 
 .btn-add-task {
-    border: black 3px solid;
-    background-color: #5eaafb;
+
+    background-color: #3b6ca0;
+    color: var(--dark);
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -142,7 +176,7 @@ header {
     position: absolute;
     bottom: 25px;
     right: 25px;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .form-input-container {
@@ -158,7 +192,7 @@ header {
 }
 
 .form-input {
-    background-color: rgb(153, 153, 153) ;
+    background-color: rgb(153, 153, 153);
 }
 
 .form-btn-container {
@@ -220,6 +254,8 @@ header {
 .task-date {
     margin-left: auto;
     font-size: .9rem;
+    min-width: 80px;
+    text-align: right;
 }
 
 .task-container-left {
@@ -238,7 +274,7 @@ header {
 }
 
 .task-checkbox {
-    width:20px;
+    width: 20px;
     height: 20px;
     flex: none;
 }
@@ -288,7 +324,7 @@ header {
 
 .task:nth-child(odd) {
     background-color: rgb(48, 47, 58);
-    
+
 }
 
 .complete {

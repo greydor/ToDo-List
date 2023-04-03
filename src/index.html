@@ -18,12 +18,7 @@
     <div class="projects">
       <ul class="projects-content">
         <li class="projects-item" data-index="0">
-          <input
-            class="projects-item-name"
-            type="text"
-            placeholder="Default Project"
-            readonly
-          />
+          <input class="projects-item-name" type="text" readonly />
           <button class="btn-project-rename btn-project" type="button">
             <svg
               alt="pencil icon"
@@ -41,7 +36,11 @@
               alt="checkmark"
               class="btn-project-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+              />
             </svg>
           </button>
           <button class="btn-project-delete btn-project" type="button">
@@ -83,7 +82,12 @@
             class="form-description form-input"
           ></textarea>
           <label for="input-due-date">Due Date:</label>
-          <input type="date" id="input-due-date" name="due-date" class="form-input"  />
+          <input
+            type="date"
+            id="input-due-date"
+            name="due-date"
+            class="form-input"
+          />
           <label for="input-priority">Priority:</label>
           <select name="priority" id="input-priority" class="form-input">
             <option value="Low">Low</option>
@@ -92,10 +96,16 @@
         </div>
 
         <div class="form-btn-container">
-          <button type="submit" id="btn-submit-form" class="btn-submit-form form-input">
+          <button
+            type="submit"
+            id="btn-submit-form"
+            class="btn-submit-form form-input"
+          >
             Submit
           </button>
-          <button type="button" id="btn-cancel-form" class="form-input">Cancel</button>
+          <button type="button" id="btn-cancel-form" class="form-input">
+            Cancel
+          </button>
         </div>
       </form>
     </div>

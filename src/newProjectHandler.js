@@ -34,7 +34,7 @@ function newProjectHandler() {
         projectNameEl.classList.remove("projects-item-name");
         projectNameEl.classList.add("new-project-temp");
         projectNameEl.removeAttribute("readonly");
-        newProjectEl.setAttribute("data-index", "")
+        newProjectEl.setAttribute("data-index", "");
         btnRename.style.display = "none";
         btnRenameAccept.style.display = "inline";
     });

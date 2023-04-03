@@ -19,11 +19,10 @@ function resetProjectRender() {
         project.classList.add("btn-project-name");
         const index = project.parentNode.getAttribute("data-index");
         try {
-            project.value = projectList.get()[index].title;            
-        } catch(ValueError) {
+            project.value = projectList.get()[index].title;
+        } catch (ValueError) {
             // Pass
         }
-        
     });
 
     const newProject = document.querySelector(".new-project-temp");
