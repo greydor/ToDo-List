@@ -13,7 +13,7 @@ const btnCancel = document.querySelector("#btn-cancel-form");
 const inputDescription = document.querySelector("#input-task-description");
 const inputTitle = document.querySelector("#input-task-title");
 const inputDueDate = document.querySelector("#input-due-date");
-const inputImportance = document.querySelector("#input-importance");
+const inputPriority = document.querySelector("#input-priority");
 
 function formHandler() {
     btnAddTask.addEventListener("click", () => {
@@ -44,7 +44,8 @@ function submitForm(event, taskIndex = false) {
         inputTitle.value,
         inputDescription.value,
         dueDate,
-        inputImportance.value
+        inputPriority.value,
+        false,
     );
 
     const taskListEdit = activeProject().tasks;

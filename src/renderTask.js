@@ -8,9 +8,10 @@ const taskListEl = document.querySelector(".task-list");
 const inputDescription = document.querySelector("#input-task-description");
 const inputTitle = document.querySelector("#input-task-title");
 const inputDueDate = document.querySelector("#input-due-date");
-const inputImportance = document.querySelector("#input-importance");
+const inputPriority = document.querySelector("#input-priority");
 
-function render(currentTask, index) {
+function render(task, index) {
+    const currentTask = task;
     const taskEl = document.createElement("li");
     taskEl.classList.add("task");
 
@@ -18,17 +19,26 @@ function render(currentTask, index) {
     taskCheckbox.setAttribute("type", "checkbox");
     taskCheckbox.setAttribute("id", "task-checkbox");
     taskCheckbox.setAttribute("aria-label", "mark task complete");
+    taskCheckbox.classList.add("task-checkbox");
+    if (currentTask.complete === true) {
+        taskCheckbox.setAttribute("checked", "");
+        taskEl.classList.add("complete");
+    }
+
+    taskCheckbox.addEventListener("click", () => {
+        if (currentTask.complete === true) {
+            taskEl.classList.remove("complete");
+        } else {
+            taskEl.classList.add("complete");
+        }
+        currentTask.complete = !currentTask.complete;
+    });
 
     const taskPriority = document.createElement("div");
     taskPriority.classList.add("task-priority");
-    if (currentTask.importance === "High") {
+    if (currentTask.priority === "High") {
         taskPriority.classList.add("priority-high");
-    } else if (currentTask.importance === "Medium") {
-        taskPriority.classList.add("priority-med");
-    } else {
-        taskPriority.classList.add("priority-low");
     }
-
     const taskContainerLeft = document.createElement("div");
     taskContainerLeft.classList.add("task-container-left");
 
@@ -62,11 +72,17 @@ function render(currentTask, index) {
         resetProjectRender();
         inputTitle.value = activeTask().title;
         inputDescription.value = activeTask().description;
-        inputDueDate.value = format(
-            new Date(activeTask().dueDate),
-            "yyyy-MM-dd"
-        );
-        inputImportance.value = activeTask().importance;
+
+        try {
+            inputDueDate.value = format(
+                new Date(activeTask().dueDate),
+                "yyyy-MM-dd"
+            );
+        } catch (RangeError) {
+            // Pass
+        }
+
+        inputPriority.value = activeTask().priority;
     });
     btnEditDiv.appendChild(btnEdit);
 
@@ -80,8 +96,8 @@ function render(currentTask, index) {
     });
     btnDelDiv.appendChild(btnDelete);
 
+    taskEl.appendChild(taskPriority);
     taskEl.appendChild(taskCheckbox);
-    // taskEl.appendChild(taskPriority)
     taskEl.appendChild(taskContainerLeft);
     taskEl.appendChild(taskDate);
     taskEl.appendChild(btnEditDiv);

@@ -72,7 +72,7 @@
             type="text"
             id="input-task-title"
             name="title"
-            class="form-title"
+            class="form-title form-input"
             required
           />
           <label for="input-task-description">Description:</label>
@@ -80,23 +80,22 @@
             type="text"
             id="input-task-description"
             name="description"
-            class="form-description"
+            class="form-description form-input"
           ></textarea>
           <label for="input-due-date">Due Date:</label>
-          <input type="date" id="input-due-date" name="due-date" required />
-          <label for="input-importance">Importance:</label>
-          <select name="importance" id="input-importance">
+          <input type="date" id="input-due-date" name="due-date" class="form-input"  />
+          <label for="input-priority">Priority:</label>
+          <select name="priority" id="input-priority" class="form-input">
             <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
         </div>
 
         <div class="form-btn-container">
-          <button type="submit" id="btn-submit-form" class="btn-submit-form">
+          <button type="submit" id="btn-submit-form" class="btn-submit-form form-input">
             Submit
           </button>
-          <button type="button" id="btn-cancel-form">Cancel</button>
+          <button type="button" id="btn-cancel-form" class="form-input">Cancel</button>
         </div>
       </form>
     </div>

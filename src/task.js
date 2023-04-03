@@ -1,6 +1,5 @@
-function task(title, description, dueDate, importance) {
-    const complete = false;
-    return Object.freeze({ title, description, dueDate, importance, complete });
+function task(title, description, dueDate, priority, complete) {
+    return Object.seal({ title, description, dueDate, priority, complete });
 }
 
 export default task;
