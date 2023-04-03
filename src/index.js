@@ -6,7 +6,6 @@ import newProjectHandler from "./newProjectHandler";
 import './css/reset.css';
 import './css/styles.css';
 
-
 renderTaskList();
 formHandler();
 hideProjects();
