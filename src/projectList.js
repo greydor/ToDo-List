@@ -29,7 +29,7 @@ const projectList = (() => {
     exampleTasks2.add(task6);
 
     // List containing all projects
-    const projects = [
+    let projects = [
         { title: "Default Project", tasks: exampleTasks },
         { title: "Default Project - copy", tasks: exampleTasks2 },
     ];
@@ -38,9 +38,15 @@ const projectList = (() => {
     const activeIndex = 0;
 
     // Add new project at index = 0
-    function add(projectTitle) {
-        const newProject = { title: projectTitle, tasks: taskList() };
-        projects.unshift(newProject);
+    function add(projectTitle, tasks = false, addToEnd = false) {
+        let newTasks = tasks;
+        if (tasks === false) {
+            newTasks = taskList();
+        }
+        const newProject = { title: projectTitle, tasks: newTasks };
+        if (addToEnd === false) {
+            projects.unshift(newProject);
+        } else if (addToEnd === true) projects.push(newProject);
     }
 
     // Delete specified project
@@ -52,11 +58,15 @@ const projectList = (() => {
         return projects;
     }
 
+    function reset() {
+        projects = [];
+    }
+
     // Variable set to the index number of task being edited
     // Set to false if no project is being edited
     const taskEditIndex = false;
 
-    return { get, add, remove, activeIndex, taskEditIndex };
+    return { get, add, remove, reset, activeIndex, taskEditIndex };
 })();
 
 function activeProject() {

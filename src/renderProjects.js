@@ -1,7 +1,7 @@
 import projectList from "./projectList";
 import { renderTaskList, hideTaskList } from "./renderTask";
 import resetProjectRender from "./resetProjectRender";
-
+import { storeProjectList } from "./localDataStorage";
 
 const projectsListEl = document.querySelector(".projects-content");
 // Initial project DOM element that serves as a template for new projects
@@ -9,6 +9,7 @@ const defaultProjectEl = document.querySelector(".projects-item");
 
 function renderProjects() {
     // Render interactive list of all projects
+
     projectList.get().forEach((project, index) => {
         const projectEl = defaultProjectEl.cloneNode(true);
         const projectNameEl = projectEl.querySelector("input");
@@ -45,6 +46,7 @@ function renderProjects() {
             projectNameEl.classList.remove("edit-project-name");
             projectNameEl.classList.add("projects-item-name");
             projectList.activeIndex = 0;
+            storeProjectList();
         });
 
         // Delete project
@@ -61,6 +63,7 @@ function renderProjects() {
             hideTaskList();
             renderTaskList();
             highlightActiveProject();
+            storeProjectList();
         });
 
         // Show project tasks when a project is selected

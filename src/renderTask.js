@@ -1,9 +1,10 @@
-// Renmder all tasks from currently selected project
+// Render all tasks from currently selected project
 // Define event listeners for task elements
 
 import { format } from "date-fns";
 import projectList, { activeProject, activeTask } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
+import { storeProjectList } from "./localDataStorage";
 
 const overlay = document.querySelector(".overlay");
 const taskListEl = document.querySelector(".task-list");
@@ -35,6 +36,7 @@ function render(task, index) {
             taskEl.classList.add("complete");
         }
         currentTask.complete = !currentTask.complete;
+        storeProjectList();
     });
 
     // Flag project if priority is set to high
@@ -52,9 +54,9 @@ function render(task, index) {
     taskDesc.classList.add("task-desc");
     taskDesc.textContent = currentTask.description;
 
-    // Create container with task title and description 
+    // Create container with task title and description
     const taskContainerLeft = document.createElement("div");
-    taskContainerLeft.classList.add("task-container-left");    
+    taskContainerLeft.classList.add("task-container-left");
     taskContainerLeft.appendChild(taskTitle);
     taskContainerLeft.appendChild(taskDesc);
 
@@ -89,12 +91,11 @@ function render(task, index) {
                 new Date(activeTask().dueDate),
                 "yyyy-MM-dd"
             );
-        // Due date is optional, skip if date is not set
+            // Due date is optional, skip if date is not set
         } catch (RangeError) {
             // Pass
         }
         inputPriority.value = activeTask().priority;
-
     });
 
     btnEditDiv.appendChild(btnEdit);
@@ -140,6 +141,7 @@ function deleteTask(index) {
     activeProject().tasks.remove(index);
     hideTaskList();
     renderTaskList();
+    storeProjectList();
 }
 
 export { renderTaskList, hideTaskList, deleteTask };

@@ -6,6 +6,7 @@ import {
 } from "./renderProjects";
 import resetProjectRender from "./resetProjectRender";
 import { renderTaskList, hideTaskList } from "./renderTask";
+import { storeProjectList } from "./localDataStorage";
 
 const projectsListEl = document.querySelector(".projects-content");
 const defaultProjectEl = document.querySelector(".projects-item");
@@ -59,6 +60,7 @@ function newProjectHandler() {
         hideTaskList();
         renderTaskList();
         highlightActiveProject();
+        storeProjectList();
     });
 
     btnDelete.addEventListener("click", () => {

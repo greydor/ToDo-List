@@ -5,6 +5,7 @@ import task from "./task";
 import { renderTaskList, hideTaskList } from "./renderTask";
 import projectList, { activeProject } from "./projectList";
 import resetProjectRender from "./resetProjectRender";
+import { storeProjectList } from "./localDataStorage";
 
 const formNewTask = document.querySelector(".form-add-task");
 const overlay = document.querySelector(".overlay");
@@ -61,12 +62,13 @@ function submitForm(event, taskIndex = false) {
     } else {
         taskListEdit.replace(taskIndex, newTask);
     }
-    
+
     overlay.style.display = "none";
     formNewTask.reset();
     hideTaskList();
     renderTaskList();
     projectList.taskEditIndex = false;
+    storeProjectList();
     event.preventDefault();
 }
 
