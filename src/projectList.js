@@ -19,19 +19,21 @@ const projectList = (() => {
         false
     );
 
-    const task6 = task("test6", "879", "01/02/2023", "Low", true);
+    const task3 = task("Buy fruit", "Apples, bananas, raspberries", "", "Low", true);
+    const task4 = task("Buy soap", "", "", "High", false);
 
     const exampleTasks = taskList();
     exampleTasks.add(task1);
     exampleTasks.add(task2);
 
     const exampleTasks2 = taskList();
-    exampleTasks2.add(task6);
+    exampleTasks2.add(task3);
+    exampleTasks2.add(task4);
 
     // List containing all projects
     let projects = [
         { title: "Default Project", tasks: exampleTasks },
-        { title: "Default Project - copy", tasks: exampleTasks2 },
+        { title: "Shopping List", tasks: exampleTasks2 },
     ];
 
     // Index of the currently selected project to display task for

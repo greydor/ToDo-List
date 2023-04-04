@@ -40,7 +40,7 @@ function submitForm(event, taskIndex = false) {
     try {
         dueDate = format(new Date(inputDueDate.value), "MM/dd/yyyy");
     } catch (rangeError) {
-        dueDate = "N/A";
+        dueDate = "";
     }
 
     // Add new task to project
