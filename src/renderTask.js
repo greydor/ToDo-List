@@ -100,6 +100,7 @@ function render(task, index) {
 
     btnEditDiv.appendChild(btnEdit);
 
+    // Create task delete button
     const btnDelete = document.createElement("btn");
     btnDelete.classList.add("btn-delete");
     btnDelete.textContent = "Delete";
@@ -117,6 +118,7 @@ function render(task, index) {
     taskEl.appendChild(btnEditDiv);
     taskEl.appendChild(btnDelDiv);
 
+    // data-index matches the index of the task in taskList object
     taskEl.setAttribute("data-index", index);
 
     taskListEl.appendChild(taskEl);

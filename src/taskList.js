@@ -1,3 +1,4 @@
+// taskList class contains a list of task elements
 const taskList = () => {
     const list = [];
 

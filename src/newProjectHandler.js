@@ -11,8 +11,9 @@ import { storeProjectList } from "./localDataStorage";
 const projectsListEl = document.querySelector(".projects-content");
 const defaultProjectEl = document.querySelector(".projects-item");
 const btnAddProject = document.querySelector(".btn-add-project");
-const newProjectEl = defaultProjectEl.cloneNode(true);
 
+// Copy existing project node for the new project
+const newProjectEl = defaultProjectEl.cloneNode(true);
 const projectNameEl = newProjectEl.querySelector("input");
 
 const projectsWindow = document.querySelector(".projects");
@@ -24,8 +25,13 @@ const btnRenameAccept = newProjectEl.querySelector(
 );
 
 function newProjectHandler() {
+    // Add event listeners for new project buttons
+
     btnAddProject.addEventListener("click", () => {
+        // Display and configure new project element
         resetProjectRender();
+
+        // Add new project to top of window and scroll to top
         projectsWindow.scrollTo(0, 0);
         projectNameEl.value = "";
         projectsListEl.prepend(newProjectEl);
@@ -41,7 +47,11 @@ function newProjectHandler() {
     });
 
     btnRenameAccept.addEventListener("click", () => {
+        // Add new project to projectList object and update page render
+
         const newProjectName = projectNameEl.value;
+
+        // Do not allow project with no name
         if (newProjectName === "") {
             return;
         }
@@ -54,7 +64,9 @@ function newProjectHandler() {
         projectNameEl.classList.add("projects-item-name");
         projectNameEl.classList.remove("new-project-temp");
 
+        // Set new project as active
         projectList.activeIndex = 0;
+
         hideProjects();
         renderProjects();
         hideTaskList();

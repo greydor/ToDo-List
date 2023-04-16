@@ -1,5 +1,4 @@
 // Define task class
-
 function task(title, description, dueDate, priority, complete) {
     return Object.seal({
         title,
