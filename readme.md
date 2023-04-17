@@ -2,9 +2,11 @@
 
 This is a website for creating, tracking, and organizing tasks. This website is created using javascript, HTML and CSS.
 
-[Click Here](https://greydor.github.io/Todo-List/) for a link to the website.
+#### [Website Link](https://greydor.github.io/Todo-List/)
 
-[Click Here](https://github.com/greydor/Todo-List) for the source code
+#### [Video Demo](https://youtu.be/N01-PUduJRs)
+
+#### [Source Code](https://github.com/greydor/Todo-List)
 
 ## Features
 
@@ -37,6 +39,19 @@ All tasks and projects will be saved automatically using a cookie on the user's 
 The javascript code was written in OOP style. The code is broken up into multiple ES6 modules for better organization and to avoid polluting the global namespace.
 
 The final code is compiled into one javascript file using webpack. This was done mostly as a learning exercise. It is used to manage dependencies, bundle files, optimize the code.
+
+### Summary of each javascript module
+
+- index.js: Initialize website, import cookie data and add button functionality.
+- formHandler.js: Add functionality to form for creating and editing tasks.
+- localDataStorage.js: Stores and retrieves cookie data in JSON format.
+- newProjectHandler.js: Contains functionality for adding a new project.
+- projectList.js: Singleton object containing the data structure for all projects and tasks. Initialized sample data if there is no browser cookie data found. Contains global variables tracking the active project and active task.
+- renderProjects.js: Update rendering of project list.
+- renderTask.js: Update rendering of tasks.
+- resetProjectRender.js: Reset project list rendering when a user starts to add or edit a project but cancels the action.
+- task.js: Defines task class. Stores task name, description, due date, priority, and completion status.
+- taskList.js: Defines task list class. Stores list of tasks and helper functions.
 
 ## Future Improvements
 
