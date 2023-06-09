@@ -1,4 +1,5 @@
 import formHandler from "./formHandler";
+import "./footer";
 import { renderTaskList } from "./renderTask";
 import {
     renderProjects,
@@ -23,3 +24,4 @@ newProjectHandler();
 
 // Apply css
 highlightActiveProject();
+

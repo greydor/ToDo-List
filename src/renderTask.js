@@ -120,15 +120,19 @@ function render(task, index) {
     const taskContainerLeft = document.createElement("div");
     taskContainerLeft.classList.add("flex-container");
     taskContainerLeft.classList.add("task-container-left");
-    taskContainerLeft.appendChild(taskPriority);
     taskContainerLeft.appendChild(taskCheckbox);
     taskContainerLeft.appendChild(taskContainerName);
+    
+    const taskInfoContainer = document.createElement("div");
+    taskInfoContainer.classList.add("flex-container");
+    taskInfoContainer.classList.add("task-info-container");
 
+    taskInfoContainer.appendChild(taskContainerLeft);
+    taskInfoContainer.appendChild(taskContainerRight);
 
-
-    taskEl.appendChild(taskContainerLeft);
-    taskEl.appendChild(taskContainerRight);
-
+    taskEl.appendChild(taskPriority);
+    taskEl.appendChild(taskInfoContainer);
+    
     // data-index matches the index of the task in taskList object
     taskEl.setAttribute("data-index", index);
 

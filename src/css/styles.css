@@ -3,6 +3,7 @@
 :root {
     --dark: rgb(41, 37, 36);
     --light: rgb(207, 219, 213);
+    --light-accent-1: #5c97d7;
 }
 
 html {
@@ -25,7 +26,7 @@ ul {
 body {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 100px 1fr 1.5rem;
+    grid-template-rows: 100px 1fr auto;
     background-color: rgb(57, 62, 70);
     min-width: 320px;
 }
@@ -40,7 +41,7 @@ header {
 
 h1 {
     text-align: center;
-    border-bottom: solid 2px #3b6ca0;
+    border-bottom: solid 2px var(--light-accent-1);
     margin-bottom: 5px;
     font-size: 2rem;
     font-weight: bold;
@@ -257,7 +258,11 @@ h1 {
     padding: 0px 20px 0 0px;
     border-bottom: solid 2px rgb(180, 180, 180);
     color: var(--light);
-    flex-wrap:wrap
+}
+
+.task-info-container {
+    flex-wrap:wrap;
+    flex: 1
 }
 
 .task-date {
@@ -356,11 +361,12 @@ footer {
     background-color: var(--dark);
     color: var(--light);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     font-size: .8rem;
     grid-column: 1 / 2;
     grid-row: -2 / -1;
+    padding: 2px 0;
 }
 
 .footer-text a {
@@ -374,6 +380,16 @@ footer {
     color: rgb(223, 47, 47)
 }
 
+.btn-reset {
+    border: solid white 2px;
+    color: white;
+    background-color: var(--dark);
+    border-radius: .6rem;
+    padding: 1px 6px;
+    font-size: .8rem;
+}
+
+
 @media (max-width: 800px) {
     body {
         display: flex;
@@ -385,15 +401,16 @@ footer {
     }
 
     .projects {
-        border-bottom: dotted 4px var(--light);
+        border-bottom: dotted 4px var(--light-accent-1);
         margin-bottom: 10px;
         padding-bottom: 10px;
+        max-height: 220px;
+        overflow-y: scroll;
     }
 
     .task-container {
         border-left: none;
-        flex: 1
-
+        flex: 1;
     }
 
     .form-add-task {
