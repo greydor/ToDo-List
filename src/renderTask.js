@@ -20,7 +20,6 @@ function render(task, index) {
 
     const taskCheckbox = document.createElement("input");
     taskCheckbox.setAttribute("type", "checkbox");
-    taskCheckbox.setAttribute("id", "task-checkbox");
     taskCheckbox.setAttribute("aria-label", "mark task complete");
     taskCheckbox.classList.add("task-checkbox");
     if (currentTask.complete === true) {
@@ -55,10 +54,10 @@ function render(task, index) {
     taskDesc.textContent = currentTask.description;
 
     // Create container with task title and description
-    const taskContainerLeft = document.createElement("div");
-    taskContainerLeft.classList.add("task-container-left");
-    taskContainerLeft.appendChild(taskTitle);
-    taskContainerLeft.appendChild(taskDesc);
+    const taskContainerName = document.createElement("div");
+    taskContainerName.classList.add("task-container-name");
+    taskContainerName.appendChild(taskTitle);
+    taskContainerName.appendChild(taskDesc);
 
     const taskDate = document.createElement("div");
     taskDate.classList.add("task-date");
@@ -111,12 +110,24 @@ function render(task, index) {
     });
     btnDelDiv.appendChild(btnDelete);
 
-    taskEl.appendChild(taskPriority);
-    taskEl.appendChild(taskCheckbox);
+    const taskContainerRight = document.createElement("div");
+    taskContainerRight.classList.add("flex-container");
+    taskContainerRight.classList.add("task-container-right");
+    taskContainerRight.appendChild(taskDate);
+    taskContainerRight.appendChild(btnEditDiv);
+    taskContainerRight.appendChild(btnDelDiv);
+
+    const taskContainerLeft = document.createElement("div");
+    taskContainerLeft.classList.add("flex-container");
+    taskContainerLeft.classList.add("task-container-left");
+    taskContainerLeft.appendChild(taskPriority);
+    taskContainerLeft.appendChild(taskCheckbox);
+    taskContainerLeft.appendChild(taskContainerName);
+
+
+
     taskEl.appendChild(taskContainerLeft);
-    taskEl.appendChild(taskDate);
-    taskEl.appendChild(btnEditDiv);
-    taskEl.appendChild(btnDelDiv);
+    taskEl.appendChild(taskContainerRight);
 
     // data-index matches the index of the task in taskList object
     taskEl.setAttribute("data-index", index);
