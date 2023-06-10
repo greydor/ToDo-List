@@ -4,7 +4,6 @@ import taskList from "./taskList";
 import task from "./task";
 
 const projectList = (() => {
-    
   const task1 = task(
     "Example task",
     "Enter description here",
@@ -70,7 +69,7 @@ const projectList = (() => {
     { title: "Random Project6", tasks: exampleTasks3 },
     { title: "Random Project7", tasks: exampleTasks3 },
   ];
-  let projects = defaultProjects
+  let projects = defaultProjects;
 
   // Index of the currently selected project to display task for
   const activeIndex = 0;
@@ -101,14 +100,22 @@ const projectList = (() => {
   }
 
   function resetToDefault() {
-    projects = defaultProjects
+    projects = defaultProjects;
   }
 
   // Variable set to the index number of task being edited
   // Set to false if no project is being edited
   const taskEditIndex = false;
 
-  return { get, add, remove, reset, resetToDefault, activeIndex, taskEditIndex };
+  return {
+    get,
+    add,
+    remove,
+    reset,
+    resetToDefault,
+    activeIndex,
+    taskEditIndex,
+  };
 })();
 
 function activeProject() {

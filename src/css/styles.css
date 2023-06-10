@@ -261,7 +261,7 @@ h1 {
 }
 
 .task-info-container {
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     flex: 1
 }
 
@@ -372,7 +372,6 @@ footer {
 .footer-text a {
     text-decoration: none;
     color: #ffd369
-
 }
 
 .footer-text a:hover {
@@ -404,7 +403,7 @@ footer {
         border-bottom: dotted 4px var(--light-accent-1);
         margin-bottom: 10px;
         padding-bottom: 10px;
-        max-height: 220px;
+        max-height: 160px;
         overflow-y: scroll;
     }
 
@@ -421,4 +420,11 @@ footer {
         gap: 5px;
         margin-bottom: 10px;
     }
+
+    .btn-add-task {
+        width: 45px;
+        height: 45px;
+        font-size: 3rem;
+    }
+
 }
